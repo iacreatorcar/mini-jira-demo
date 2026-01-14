@@ -5,8 +5,16 @@
 <form method="post">
     <label>Title:</label><br>
     <input type="text" name="title" required><br><br>
+    
     <label>Description:</label><br>
     <textarea name="description" required></textarea><br><br>
+    
+    <label>Assigned To:</label><br>
+    <input type="text" name="assigned_to" required><br><br>
+    
+    <label>Due Date:</label><br>
+    <input type="date" name="due_date" required><br><br>
+    
     <input type="submit" value="Add Task" class="btn">
     <a href="{{ url_for('index') }}" class="btn">Back</a>
 </form>
