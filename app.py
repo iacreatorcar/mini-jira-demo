@@ -14,11 +14,14 @@ def add():
         title = request.form["title"]
         description = request.form["description"]
         task = {
-            "id": len(tasks) + 1,
-            "title": title,
-            "description": description,
-            "status": "To Do"
-        }
+    "id": len(tasks) + 1,
+    "title": title,
+    "description": description,
+    "assigned_to": request.form["assigned_to"],
+    "due_date": request.form["due_date"],
+    "status": "To Do",
+    "updates": []
+}
         tasks.append(task)
         return redirect(url_for("index"))
     return render_template("add_task.html")
