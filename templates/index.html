@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{{ url_for('add') }}" class="btn">Add New Task</a>
+<div class="board">
+    {% for status in ["To Do", "In Progress", "Done"] %}
+    <div class="column">
+        <h2>{{ status }}</h2>
+        <ul>
+        {% for task in tasks if task.status == status %}
+            <li>
+                <strong>{{ task.title }}</strong><br>
+                <em>{{ task.description }}</em><br>
+                Assigned to: {{ task.assigned_to }}<br>
+                Due date: {{ task.due_date }}<br>
+                <b>Updates:</b>
+                <ul>
+                  {% for upd in task.updates %}
+                    <li>{{ upd }}</li>
+                  {% endfor %}
+                </ul>
+                <a href="{{ url_for('move', task_id=task.id) }}" class="small-btn">Move Status</a>
+            </li>
+        {% else %}
+            <li>No tasks</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
